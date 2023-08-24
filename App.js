@@ -9,6 +9,10 @@ function createChart(data) {
     const maxAmount = Math.max(...data.map(chart => chart.amount));
     const maxIndex = data.findIndex(chart => chart.amount === maxAmount);
 
+    let totalSum = data.reduce((sum, chart) => sum + chart.amount, 0);
+    const totalAmountElement = document.getElementById("totalAmount");
+    totalAmountElement.textContent = `$${totalSum.toFixed(2)}`;
+
 
     const info = {
         labels: data.map(chart => chart.day),
